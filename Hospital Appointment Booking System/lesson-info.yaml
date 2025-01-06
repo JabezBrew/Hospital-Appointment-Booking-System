@@ -1,0 +1,7 @@
+type: framework
+content:
+  - Get an appointment
+  - Store in the database
+  - Transfer appointments
+  - Show statistics
+current_task: 3

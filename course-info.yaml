@@ -1,0 +1,15 @@
+type: hyperskill
+title: Hospital Appointment Booking System
+language: English
+summary: "<p>Proper management of hospitals is the key factor of a good service. To\
+  \ improve it, the Head Physician asked you to devise an appointment system based\
+  \ on REST API. With this app, patients can get appointments, the Head Physician\
+  \ can observe the doctors' workload, and doctors can plan their days in a better\
+  \ manner.</p><br/><br/>Learn more at <a href=\"https://hyperskill.org/projects/304?utm_source=ide&utm_medium=ide&utm_campaign=ide&utm_content=project-card\"\
+  >https://hyperskill.org/projects/304</a>"
+programming_language: Java
+programming_language_version: 11
+content:
+  - Hospital Appointment Booking System
+mode: Study
+yaml_version: 1

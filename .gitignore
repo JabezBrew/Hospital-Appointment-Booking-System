@@ -1,0 +1,5 @@
+# Project exclude paths
+/.gradle/
+/Hospital Appointment Booking System/task/build/
+/Hospital Appointment Booking System/task/build/classes/java/main/
+/Hospital Appointment Booking System/task/build/classes/java/test/
