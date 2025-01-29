@@ -1,27 +1,22 @@
 package AppointToDoctorRestService.repo;
 
+import AppointToDoctorRestService.entities.Appointment;
+import AppointToDoctorRestService.entities.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import AppointToDoctorRestService.entities.Appointment;
 
-import jakarta.transaction.Transactional;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
-    @Modifying
-    @Transactional
-    @Query("Update Appointment a set a.doctor = 'director' where a.doctor = ?1")
-    void updateDoctorName(String doctorName);
-    @Query("SELECT a.date, COUNT(a) FROM Appointment a GROUP BY a.date ORDER BY a.date")
-    List<Object[]> countAppointmentsByDate();
-    @Query("SELECT a.doctor, COUNT(a) FROM Appointment a GROUP BY a.doctor")
-    List<Object[]> countAppointmentByDoctor();
-    @Transactional
-    void deleteAppointmentsByDoctor(@NotNull @NotEmpty @NotBlank String doctor);
+    
+    @Query("SELECT NEW map(a.date as date, COUNT(a) as count) FROM Appointment a GROUP BY a.date ORDER BY a.date")
+    List<Map<String, Long>> countAppointmentsByDate();
+
+    @Query("SELECT NEW map(a.doctor.user.username as doctor, COUNT(a) as count) FROM Appointment a GROUP BY a.doctor.user.username ORDER BY a.doctor.user.username")
+    List<Map<String, Long>> countAppointmentsByDoctor();
+
+    List<Appointment> findByDoctorOrderByDateAsc(Doctor doctor);
 }
